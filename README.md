@@ -16,5 +16,10 @@ git clone https://github.com/comitivaesperanca/backend
 
 Em seguida, execute o comando:
 ```bash
+pip install -r requirements.txt
+```
+
+Em seguida, execute o comando:
+```bash
 docker-compose up -d --build
 ```
