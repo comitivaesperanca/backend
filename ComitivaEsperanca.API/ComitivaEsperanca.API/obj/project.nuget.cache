@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "ltEr98e44oqnte1mXpCQabgPq5sqd3TCtEyimUaQkJFFuyImBDvGT7dJb/gibj0KTvpr8mXSvkQyg2Zu8p5cAg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API\\ComitivaEsperanca.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

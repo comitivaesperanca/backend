@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "ComitivaEsperanca.API.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ComitivaEsperanca.API.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ComitivaEsperanca.API.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ComitivaEsperanca.API.Data.dll": {}
+        }
+      },
+      "ComitivaEsperanca.API.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ComitivaEsperanca.API.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ComitivaEsperanca.API.Domain.dll": {}
+        }
+      },
+      "ComitivaEsperanca.API.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ComitivaEsperanca.API.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ComitivaEsperanca.API.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ComitivaEsperanca.API.Service.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ComitivaEsperanca.API.Data/1.0.0": {
+      "type": "project",
+      "path": "../ComitivaEsperanca.Data/ComitivaEsperanca.API.Data.csproj",
+      "msbuildProject": "../ComitivaEsperanca.Data/ComitivaEsperanca.API.Data.csproj"
+    },
+    "ComitivaEsperanca.API.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ComitivaEsperanca.API.Domain/ComitivaEsperanca.API.Domain.csproj",
+      "msbuildProject": "../ComitivaEsperanca.API.Domain/ComitivaEsperanca.API.Domain.csproj"
+    },
+    "ComitivaEsperanca.API.Service/1.0.0": {
+      "type": "project",
+      "path": "../ComitivaEsperanca.API.Service/ComitivaEsperanca.API.Service.csproj",
+      "msbuildProject": "../ComitivaEsperanca.API.Service/ComitivaEsperanca.API.Service.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "ComitivaEsperanca.API.Data >= 1.0.0",
+      "ComitivaEsperanca.API.Service >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Godoy\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API.CrossCutting\\ComitivaEsperanca.API.CrossCutting.csproj",
+      "projectName": "ComitivaEsperanca.API.CrossCutting",
+      "projectPath": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API.CrossCutting\\ComitivaEsperanca.API.CrossCutting.csproj",
+      "packagesPath": "C:\\Users\\Godoy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API.CrossCutting\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Godoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API.Service\\ComitivaEsperanca.API.Service.csproj": {
+              "projectPath": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API.Service\\ComitivaEsperanca.API.Service.csproj"
+            },
+            "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.Data\\ComitivaEsperanca.API.Data.csproj": {
+              "projectPath": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.Data\\ComitivaEsperanca.API.Data.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
