@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComitivaEsperanca.API", "ComitivaEsperanca.API\ComitivaEsperanca.API.csproj", "{56A81A35-E29A-4D33-A393-4D66D08FDD8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API", "ComitivaEsperanca.API\ComitivaEsperanca.API.csproj", "{56A81A35-E29A-4D33-A393-4D66D08FDD8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComitivaEsperanca.Data", "ComitivaEsperanca.Data\ComitivaEsperanca.Data.csproj", "{25408C04-D822-402F-B94F-E648EC49E93C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API.Data", "ComitivaEsperanca.Data\ComitivaEsperanca.API.Data.csproj", "{25408C04-D822-402F-B94F-E648EC49E93C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API.Domain", "ComitivaEsperanca.API.Domain\ComitivaEsperanca.API.Domain.csproj", "{72F09B0D-E943-4FB7-B66F-76C85EDB97D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API.Service", "ComitivaEsperanca.API.Service\ComitivaEsperanca.API.Service.csproj", "{1529C6A4-3ABD-486C-9FD2-83956529B3C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API.CrossCutting", "ComitivaEsperanca.API.CrossCutting\ComitivaEsperanca.API.CrossCutting.csproj", "{4CE37598-6517-479A-9673-360F88396E04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{25408C04-D822-402F-B94F-E648EC49E93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25408C04-D822-402F-B94F-E648EC49E93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25408C04-D822-402F-B94F-E648EC49E93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F09B0D-E943-4FB7-B66F-76C85EDB97D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F09B0D-E943-4FB7-B66F-76C85EDB97D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F09B0D-E943-4FB7-B66F-76C85EDB97D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F09B0D-E943-4FB7-B66F-76C85EDB97D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1529C6A4-3ABD-486C-9FD2-83956529B3C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1529C6A4-3ABD-486C-9FD2-83956529B3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1529C6A4-3ABD-486C-9FD2-83956529B3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1529C6A4-3ABD-486C-9FD2-83956529B3C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE37598-6517-479A-9673-360F88396E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE37598-6517-479A-9673-360F88396E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE37598-6517-479A-9673-360F88396E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE37598-6517-479A-9673-360F88396E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
