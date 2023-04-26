@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "xNGiIplSD1WWXxP9dLe+99rRFgZeQopfwgIwjG+WQeTNLItRZ8Ji4iiNME2q5vZykNZ/JRCddncjXzJk70L9dg==",
+  "dgSpecHash": "zN7CygG8qtFOKc3XGLjN7w9CzUxNfMmuuHjOeHlF2FAxR/duCTyMO6WgwmRLeGheRaR67ywim7q/Blsgz1fXSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Godoy\\source\\repos\\backend\\ComitivaEsperanca.API\\ComitivaEsperanca.API.Domain\\ComitivaEsperanca.API.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Godoy\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Godoy\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
     "C:\\Users\\Godoy\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
