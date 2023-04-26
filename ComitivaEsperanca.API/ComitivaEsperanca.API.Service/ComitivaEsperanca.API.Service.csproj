@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ComitivaEsperanca.API.Domain\ComitivaEsperanca.API.Domain.csproj" />
-    <ProjectReference Include="..\ComitivaEsperanca.Data\ComitivaEsperanca.API.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

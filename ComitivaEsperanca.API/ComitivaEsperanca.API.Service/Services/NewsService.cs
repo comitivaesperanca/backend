@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using ComitivaEsperanca.API.Data.Context;
-using ComitivaEsperanca.API.Domain.Interfaces.UnitOfWork;
+﻿using ComitivaEsperanca.API.Domain.Interfaces.UnitOfWork;
 
 namespace ComitivaEsperanca.API.Service.Services
 {
@@ -9,9 +7,5 @@ namespace ComitivaEsperanca.API.Service.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public NewsService(CoreContext context, IMapper mapper)
-        {
-            
-        }
     }
 }
