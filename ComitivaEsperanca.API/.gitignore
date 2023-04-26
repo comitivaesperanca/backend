@@ -11,9 +11,10 @@
 *.sln.docstates
 
 # System
-Debug\net6.0/
-obj/
-obj\Debug\net6
+**/Debug\net6.0/
+**/obj/
+**/obj\Debug\net6
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
