@@ -1,4 +1,6 @@
 ﻿using ComitivaEsperanca.API.Data.Context;
+using ComitivaEsperanca.API.Data.Repositories.Entities;
+using ComitivaEsperanca.API.Domain.Interfaces.Repositories.Entities;
 using ComitivaEsperanca.API.Domain.Interfaces.UnitOfWork;
 
 namespace ComitivaEsperanca.API.Data.UnitOfWork
@@ -8,9 +10,12 @@ namespace ComitivaEsperanca.API.Data.UnitOfWork
         private readonly CoreContext _context;
         private bool disposed = false;
 
+        public INewsRepository NewsRepository { get; set; }
+
         public UnitOfWork(CoreContext context) 
         {
             _context = context;
+            this.NewsRepository = new NewsRepository(_context);
         }
 
         protected virtual void Dispose(bool disposing)
