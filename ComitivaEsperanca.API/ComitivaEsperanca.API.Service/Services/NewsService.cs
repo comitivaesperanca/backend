@@ -41,6 +41,12 @@ namespace ComitivaEsperanca.API.Service.Services
             }
         }
 
+        // Método para retornar o número total de notícias cadastradas
+        public int GetTotalNews()
+        {
+            return _unitOfWork.NewsRepository.GetAll().Count();
+        }
+
         public ResponseDTO<News> GetNewsById(Guid id)
         {
             try

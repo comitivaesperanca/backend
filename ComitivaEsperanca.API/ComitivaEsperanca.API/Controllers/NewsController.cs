@@ -32,7 +32,15 @@ namespace ComitivaEsperanca.API.Controllers
         {
             var response = _newsService.GetNewsById(id);
             return StatusCode(response.StatusCode, response);
+        }
 
+        [HttpGet("/count")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetTotalNews()
+        {
+            var response = _newsService.GetTotalNews();
+            return StatusCode(StatusCodes.Status200OK, response);
         }
         
                                   
