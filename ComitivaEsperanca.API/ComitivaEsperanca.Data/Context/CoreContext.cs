@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ComitivaEsperanca.API.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ComitivaEsperanca.API.Data.Context
     public class CoreContext : DbContext
     {
         #region [DbSets]
+        public DbSet<News>? News { get; set; }
         #endregion
 
         public CoreContext(DbContextOptions<CoreContext> options) : base(options) { }
