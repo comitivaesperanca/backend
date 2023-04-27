@@ -1,5 +1,19 @@
+using ComitivaEsperanca.API.CrossCutting.DependencyInjection;
+using ComitivaEsperanca.API.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using SesiFlow.API.CrossCutting.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors();
+
+builder.Services.AddEntityFrameworkNpgsql()
+    .AddDbContext<CoreContext>(options =>
+    options.UseNpgsql("Server=database-pantanaldev-comitivaesperanca.postgres.database.azure.com;Database=api_database;Port=5432;User Id=comitiva_admin;Password=Esperanca@123;Ssl Mode=Require;"));
+
+ConfigureService.Configure(builder.Services);
+ConfigureRepositories.Configure(builder.Services, builder.Configuration);
+ConfigureMappers.Configure(builder.Services);
 // Add services to the container.
 
 builder.Services.AddControllers();
