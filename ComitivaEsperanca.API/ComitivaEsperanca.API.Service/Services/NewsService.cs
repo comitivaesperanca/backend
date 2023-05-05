@@ -4,7 +4,9 @@ using ComitivaEsperanca.API.Data.UnitOfWork;
 using ComitivaEsperanca.API.Domain.DTOs;
 using ComitivaEsperanca.API.Domain.Entities;
 using ComitivaEsperanca.API.Domain.Interfaces.UnitOfWork;
+using ComitivaEsperanca.API.Generics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComitivaEsperanca.API.Service.Services
 {
@@ -41,7 +43,27 @@ namespace ComitivaEsperanca.API.Service.Services
             }
         }
 
-        // Método para retornar o número total de notícias cadastradas
+        public ResponseDTO<News> UpdateNews(NewsDTO newsDTO)
+        {
+            #region [Validations]
+            #endregion
+            try
+            {
+                var news = _mapper.Map<News>(newsDTO);
+
+                _unitOfWork.NewsRepository.Update(news);
+
+                if (_unitOfWork.Commit() > 0)
+                    return new ResponseDTO<News>(StatusCodes.Status200OK, news);
+
+                return new ResponseDTO<News>(StatusCodes.Status400BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO<News>(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }   
+
         public int GetTotalNews()
         {
             return _unitOfWork.NewsRepository.GetAll().Count();
@@ -60,6 +82,39 @@ namespace ComitivaEsperanca.API.Service.Services
             {
                 return new ResponseDTO<News>(StatusCodes.Status500InternalServerError, ex.Message);
             }
+        }
+        public async Task<PaginatedItemsDTO<NewsDTO>> GetListAsync(string? search, string? sentiment, DateTime? date, string? source, int pageSize, int pageIndex)
+        {
+
+            IQueryable<News> newsList = _unitOfWork.NewsRepository.GetAll().OrderBy(x => x.Title);
+
+            if (search != null)
+                newsList = newsList.Where(x => x.Title.Contains(search) || x.NewsContent.Contains(search));
+
+            if (source != null)
+                newsList = newsList.Where(x => x.Source.Equals(source));
+
+            //if (sentiment.Equals("Positivo"))
+            //    news = news.Where(x => x.Equals("Positivo"))
+
+            if (sentiment != null)
+                newsList = newsList.Where(x => x.FinalSentiment.Equals("Neutro"));
+
+            if (sentiment != null)
+                newsList = newsList.Where(x => x.FinalSentiment.Equals("Negativo"));
+
+            if (sentiment != null)
+                newsList = newsList.Where(x => EF.Functions.Like(x.FinalSentiment, "Positivo"));
+
+            if (date != null)
+                newsList = newsList.Where(x => x.PublicationDate.Equals(date));
+
+
+
+            var itemsOnPage = await GenericSort.SkipTakeAndSelectItemsAsync(newsList, pageSize, pageIndex, news => new NewsDTO(news));
+            var totalItems = await newsList.CountAsync();
+
+            return new PaginatedItemsDTO<NewsDTO>(pageIndex, pageSize, totalItems, itemsOnPage);
         }
     }
 }
