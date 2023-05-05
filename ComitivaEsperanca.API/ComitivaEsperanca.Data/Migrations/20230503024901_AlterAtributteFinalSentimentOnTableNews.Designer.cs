@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ComitivaEsperanca.API.Data.Migrations
 {
     [DbContext(typeof(CoreContext))]
-    [Migration("20230426235153_CreateTableNews")]
-    partial class CreateTableNews
+    [Migration("20230503024901_AlterAtributteFinalSentimentOnTableNews")]
+    partial class AlterAtributteFinalSentimentOnTableNews
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,8 +35,9 @@ namespace ComitivaEsperanca.API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double>("FinalSentiment")
-                        .HasColumnType("double precision");
+                    b.Property<string>("FinalSentiment")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("NegativeSentiment")
                         .HasColumnType("double precision");

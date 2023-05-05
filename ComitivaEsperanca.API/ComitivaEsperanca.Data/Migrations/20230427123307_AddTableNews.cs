@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ComitivaEsperanca.API.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateTableNews : Migration
+    public partial class AddTableNews : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
