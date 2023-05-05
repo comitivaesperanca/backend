@@ -1,7 +1,10 @@
-﻿namespace ComitivaEsperanca.API.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ComitivaEsperanca.API.Domain.Entities
 {
     public class News
     {
+        [Key]
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string NewsContent{ get; set; }
@@ -11,6 +14,6 @@
         public double PositiveSentiment { get; set; }
         public double NeutralSentiment { get; set; }
         public double NegativeSentiment { get; set; }
-        public double FinalSentiment{ get; set; }
+        public string FinalSentiment{ get; set; }
     }
 }
