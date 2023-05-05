@@ -1,4 +1,6 @@
-﻿namespace ComitivaEsperanca.API.Domain.DTOs
+﻿using ComitivaEsperanca.API.Domain.Entities;
+
+namespace ComitivaEsperanca.API.Domain.DTOs
 {
     public class NewsDTO
     {
@@ -11,11 +13,24 @@
         public double PositiveSentiment { get; set; }
         public double NeutralSentiment { get; set; }
         public double NegativeSentiment { get; set; }
-        public double FinalSentiment { get; set; }
+        public string FinalSentiment { get; set; }
 
         public NewsDTO()
         {
             
+        }
+        public NewsDTO(News news)
+        {
+            Id = news.Id;
+            Title = news.Title;
+            NewsContent = news.NewsContent;
+            PublicationDate = news.PublicationDate;
+            CommodityType = news.CommodityType;
+            Source = news.Source;
+            PositiveSentiment = news.PositiveSentiment;
+            NeutralSentiment = news.NeutralSentiment;
+            NegativeSentiment = news.NegativeSentiment;
+            FinalSentiment = news.FinalSentiment;
         }
     }
 }
