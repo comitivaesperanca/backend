@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/ComitivaEsperancaApiManagement/apis/ComitivaEsperancaAPI",
+      "type": "apis.azure"
+    }
+  }
+}
