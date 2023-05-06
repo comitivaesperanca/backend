@@ -44,6 +44,8 @@ app.UseCors(c =>
     c.AllowAnyMethod();
     c.AllowAnyOrigin();
 });
+
+app.UseCors(option => option.AllowAnyOrigin()); 
 #endregion
 
 app.UseHttpsRedirection();
