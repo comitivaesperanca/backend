@@ -3,6 +3,7 @@ using System;
 using ComitivaEsperanca.API.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ComitivaEsperanca.API.Data.Migrations
 {
     [DbContext(typeof(CoreContext))]
-    partial class CoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230506024126_CreateTableClassifiedNews")]
+    partial class CreateTableClassifiedNews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,10 +33,6 @@ namespace ComitivaEsperanca.API.Data.Migrations
 
                     b.Property<Guid>("NewsId")
                         .HasColumnType("uuid");
-
-                    b.Property<string>("SuggestedFeeling")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
