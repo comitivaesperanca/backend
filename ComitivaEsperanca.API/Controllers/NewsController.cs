@@ -66,6 +66,15 @@ namespace ComitivaEsperanca.API.Controllers
         {
             return await _newsService.GetListAsync(search, sentiment, date, source, pageSize, pageIndex);
         }
+
+        [HttpGet("Sources")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseDTO<List<string>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ResponseDTO<List<string>>))]
+        public IActionResult GetNewsSources()
+        {
+            var response = _newsService.GetNewsSources();
+            return StatusCode(response.StatusCode, response);
+        }
                                   
     }
 }

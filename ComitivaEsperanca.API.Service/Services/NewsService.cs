@@ -83,6 +83,23 @@ namespace ComitivaEsperanca.API.Service.Services
                 return new ResponseDTO<News>(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
+        public ResponseDTO<List<string>> GetNewsSources()
+        {
+            try
+            {
+                var news = _unitOfWork.NewsRepository.GetAll().Select(x => x.Source).Distinct().ToList();
+                if (news == null)
+                    return new ResponseDTO<List<string>>(StatusCodes.Status404NotFound);
+
+                return new ResponseDTO<List<string>>(StatusCodes.Status200OK, news);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO<List<string>>(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
         public async Task<PaginatedItemsDTO<NewsDTO>> GetListAsync(string? search, string? sentiment, DateTime? date, string? source, int pageSize, int pageIndex)
         {
 
