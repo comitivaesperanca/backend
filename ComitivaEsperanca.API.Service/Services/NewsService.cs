@@ -94,8 +94,8 @@ namespace ComitivaEsperanca.API.Service.Services
             if (source != null)
                 newsList = newsList.Where(x => x.Source.Equals(source));
 
-            //if (sentiment.Equals("Positivo"))
-            //    news = news.Where(x => x.Equals("Positivo"))
+            if (sentiment != null)
+                newsList = newsList.Where(x => x.FinalSentiment.Equals("Positivo"));
 
             if (sentiment != null)
                 newsList = newsList.Where(x => x.FinalSentiment.Equals("Neutro"));
@@ -103,11 +103,9 @@ namespace ComitivaEsperanca.API.Service.Services
             if (sentiment != null)
                 newsList = newsList.Where(x => x.FinalSentiment.Equals("Negativo"));
 
-            if (sentiment != null)
-                newsList = newsList.Where(x => EF.Functions.Like(x.FinalSentiment, "Positivo"));
-
             if (date != null)
-                newsList = newsList.Where(x => x.PublicationDate.Equals(date));
+                newsList = newsList.Where(x => x.PublicationDate.CompareTo(date) == 0);
+
 
 
 
