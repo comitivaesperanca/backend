@@ -37,6 +37,15 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+#region [Cors]
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
+#endregion
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
