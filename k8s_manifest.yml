@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: comitiva-esperanca-backend
   labels:
     app: comitiva-esperanca-backend
   name: comitiva-esperanca-backend
