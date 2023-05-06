@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: comitiva-esperanca-backend
+  name: comitiva-esperanca-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comitiva-esperanca-backend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: comitiva-esperanca-backend
+    spec:
+      containers:
+      - image: mfelipemota/comitivaesperanca-backend:main
+        name: comitiva-esperanca-backend
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:5400
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 5400 
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: comitiva-esperanca-backend-service
+  labels:
+    run: comitiva-esperanca-backend-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 5400
+    protocol: TCP
+  selector:
+    app: comitiva-esperanca-backend
+
+  type: LoadBalancer
