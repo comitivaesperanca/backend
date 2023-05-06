@@ -13,11 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComitivaEsperanca.API.CrossCutting", "ComitivaEsperanca.API.CrossCutting\ComitivaEsperanca.API.CrossCutting.csproj", "{4CE37598-6517-479A-9673-360F88396E04}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{81ECF0FF-FDA0-4E14-AB24-7FFDAC428E6E}"
-	ProjectSection(SolutionItems) = preProject
-		web.config = web.config
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
