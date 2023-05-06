@@ -12,6 +12,7 @@ namespace ComitivaEsperanca.API.Data.Context
     {
         #region [DbSets]
         public DbSet<News>? News { get; set; }
+        public DbSet<ClassifiedNews>? ClassifiedNews { get; set; }
         #endregion
 
         public CoreContext(DbContextOptions<CoreContext> options) : base(options) { }
