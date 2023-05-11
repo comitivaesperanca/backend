@@ -9,7 +9,7 @@ builder.Services.AddCors();
 
 builder.Services.AddEntityFrameworkNpgsql()
     .AddDbContext<CoreContext>(options =>
-    options.UseNpgsql("Server=database-pantanaldev-comitivaesperanca.postgres.database.azure.com;Database=api_database;Port=5432;User Id=comitiva_admin;Password=Pantanal@123;Ssl Mode=VerifyFull;"));
+    options.UseNpgsql("Server=pantanaldev-dev.postgres.database.azure.com;Database=api_database;Port=5432;User Id=comitivaesperanca;Password=Pantanal123;Ssl Mode=VerifyFull;"));
 
 ConfigureService.Configure(builder.Services);
 ConfigureRepositories.Configure(builder.Services, builder.Configuration);
