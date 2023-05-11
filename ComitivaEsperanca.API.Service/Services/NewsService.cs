@@ -131,24 +131,15 @@ namespace ComitivaEsperanca.API.Service.Services
 
             return new PaginatedItemsDTO<NewsDTO>(pageIndex, pageSize, totalItems, itemsOnPage);
         }
-
-        // Desenvolver método que retorne o sentimento diário do mercado entre Positivo, Neutro e Negativo (porcentagem)
-        public ResponseDTO<List<NewsSentimentDTO>> GetDailySentiment()
+        public ResponseDTO<List<NewsSentimentDTO>> GetDailySentiments()
         {
-            try
-            {
-                // Retornar a quantidade de notícias positivas, neutras e negativas do dia atual (data atual)
-                var newsSentiment = _unitOfWork.NewsRepository.GetAll().Where(x => x.PublicationDate.Date == DateTime.Now.Date).GroupBy(x => x.FinalSentiment).Select(x => new NewsSentimentDTO { Sentiment = x.Key, Count = x.Count() }).ToList();
-                
-                if (newsSentiment == null)
-                    return new ResponseDTO<List<NewsSentimentDTO>>(StatusCodes.Status404NotFound);
+            var news = _unitOfWork.NewsRepository.GetAll()
+                                                .Where(x => x.PublicationDate.Date.Equals(DateTime.UtcNow.Date.AddDays(-1)))
+                                                .GroupBy(x => x.FinalSentiment)
+                                                    .Select(x => new NewsSentimentDTO { Sentiment = x.Key, Count = x.Count() })
+                                                                                                                        .ToList();
 
-                return new ResponseDTO<List<NewsSentimentDTO>>(StatusCodes.Status200OK, newsSentiment);
-            }
-            catch (Exception ex)
-            {
-                return new ResponseDTO<List<NewsSentimentDTO>>(StatusCodes.Status500InternalServerError, ex.Message);
-            }
+            return new ResponseDTO<List<NewsSentimentDTO>>(StatusCodes.Status200OK, news);
         }
     }
 }

@@ -77,13 +77,12 @@ namespace ComitivaEsperanca.API.Controllers
         }
 
         [HttpGet("DailySentiments")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseDTO<List<string>>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ResponseDTO<List<string>>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseDTO<List<NewsSentimentDTO>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ResponseDTO<List<NewsSentimentDTO>>))]
         public IActionResult GetDailySentiments()
         {
-            var response = _newsService.GetDailySentiment();
+            var response = _newsService.GetDailySentiments();
             return StatusCode(response.StatusCode, response);
-        }
-                                  
+        }                           
     }
 }
