@@ -56,7 +56,7 @@ namespace ComitivaEsperanca.API.Controllers
         [HttpGet("Paginated")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseDTO<List<NewsDTO>>))]
-        public async Task<PaginatedItemsDTO<NewsDTO>> GetPaginated(
+        public PaginatedItemsDTO<NewsDTO> GetPaginated(
             [FromQuery] string? search,
             [FromQuery] string? sentiment,
             [FromQuery] DateTime? date,
@@ -64,7 +64,7 @@ namespace ComitivaEsperanca.API.Controllers
             [FromQuery] int pageSize = 10,
             [FromQuery] int pageIndex = 1)
         {
-            return await _newsService.GetListAsync(search, sentiment, date, source, pageSize, pageIndex);
+            return _newsService.GetList(search, sentiment, date, source, pageSize, pageIndex);
         }
 
         [HttpGet("Sources")]
