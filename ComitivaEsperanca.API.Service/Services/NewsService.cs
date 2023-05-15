@@ -3,10 +3,12 @@ using ComitivaEsperanca.API.Data.Context;
 using ComitivaEsperanca.API.Data.UnitOfWork;
 using ComitivaEsperanca.API.Domain.DTOs;
 using ComitivaEsperanca.API.Domain.Entities;
+using ComitivaEsperanca.API.Domain.Interfaces.Repositories.Entities;
 using ComitivaEsperanca.API.Domain.Interfaces.UnitOfWork;
 using ComitivaEsperanca.API.Generics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 
 namespace ComitivaEsperanca.API.Service.Services
 {
@@ -31,13 +33,13 @@ namespace ComitivaEsperanca.API.Service.Services
             {
                 var news = _mapper.Map<News>(newsDTO);
                 _unitOfWork.NewsRepository.Add(news);
-             
+
                 if (_unitOfWork.Commit() > 0)
                     return new ResponseDTO<News>(StatusCodes.Status201Created, news);
 
                 return new ResponseDTO<News>(StatusCodes.Status400BadRequest);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResponseDTO<News>(StatusCodes.Status500InternalServerError, ex.Message);
             }
@@ -62,7 +64,7 @@ namespace ComitivaEsperanca.API.Service.Services
             {
                 return new ResponseDTO<News>(StatusCodes.Status500InternalServerError, ex.Message);
             }
-        }   
+        }
 
         public int GetTotalNews()
         {
@@ -137,6 +139,62 @@ namespace ComitivaEsperanca.API.Service.Services
                                                                                                                         .ToList();
 
             return new ResponseDTO<List<NewsSentimentDTO>>(StatusCodes.Status200OK, news);
+        }
+
+        public string GetMostFrequentSentimentOnWeek()
+        {
+            DateTime endDate = DateTime.UtcNow.Date;
+            DateTime startDate = endDate.AddDays(-6);
+            startDate = startDate.Date.ToUniversalTime();
+            DateTime date = DateTime.UtcNow.Date;
+
+            int positiveCount = _unitOfWork.NewsRepository.GetAll().Count(n => n.PublicationDate.Date.ToUniversalTime() == date && n.FinalSentiment == "Positiva");
+            int neutralCount = _unitOfWork.NewsRepository.GetAll().Count(n => n.PublicationDate.Date.ToUniversalTime() == date && n.FinalSentiment == "Neutra");
+            int negativeCount = _unitOfWork.NewsRepository.GetAll().Count(n => n.PublicationDate.Date.ToUniversalTime() == date && n.FinalSentiment == "Negativa");
+
+            string mostFrequentSentiment = "Positiva";
+            int mostFrequentSentimentCount = positiveCount;
+
+            if (neutralCount > mostFrequentSentimentCount)
+            {
+                mostFrequentSentiment = "Neutra";
+                mostFrequentSentimentCount = neutralCount;
+            }
+            if (negativeCount > mostFrequentSentimentCount)
+            {
+                mostFrequentSentiment = "Negativa";
+                mostFrequentSentimentCount = negativeCount;
+            }
+            return mostFrequentSentiment;
+        }
+
+        public List<DailyReportDTO> GetDailyReport()
+        {
+            List<DailyReportDTO> dailyReports = new List<DailyReportDTO>();
+            DateTime endDate = DateTime.UtcNow.Date;
+            DateTime startDate = endDate.AddDays(-6);
+            startDate = startDate.Date.ToUniversalTime();
+            DateTime date = DateTime.UtcNow.Date;
+
+            for (date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                int positiveCount = _unitOfWork.NewsRepository.GetAll().Count(n => n.PublicationDate.Date.ToUniversalTime() == date && n.FinalSentiment == "Positiva");
+                int neutralCount = _unitOfWork.NewsRepository.GetAll().Count(n => n.PublicationDate.Date.ToUniversalTime() == date && n.FinalSentiment == "Neutra");
+                int negativeCount = _unitOfWork.NewsRepository.GetAll().Count(n => n.PublicationDate.Date.ToUniversalTime() == date && n.FinalSentiment == "Negativa");
+
+                DailyReportDTO dailyReport = new DailyReportDTO
+                {
+                    Date = date,
+                    PositiveCount = positiveCount,
+                    NeutralCount = neutralCount,
+                    NegativeCount = negativeCount,
+                    Sentiment = $"{positiveCount} positive, {neutralCount} neutral, {negativeCount} negative"
+                };
+
+                dailyReports.Add(dailyReport);
+            }
+
+            return dailyReports;
         }
     }
 }
