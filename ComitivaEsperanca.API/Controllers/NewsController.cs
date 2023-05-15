@@ -101,5 +101,16 @@ namespace ComitivaEsperanca.API.Controllers
             return _newsService.GetMostFrequentSentimentOnWeek();
         }
 
+        [HttpPost("SaveSuggestedSentiment")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ResponseDTO<ClassifiedNews>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ResponseDTO<ClassifiedNews>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ResponseDTO<ClassifiedNews>))]
+        public IActionResult Create(Guid newsId, string sentiment)
+        {
+            var response = _newsService.SaveSuggestedFeeling(newsId, sentiment);
+            return StatusCode(response.StatusCode, response.Entity);
+        }
+
+
     }
 }
