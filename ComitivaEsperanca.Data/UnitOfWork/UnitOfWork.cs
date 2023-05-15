@@ -11,11 +11,13 @@ namespace ComitivaEsperanca.API.Data.UnitOfWork
         private bool disposed = false;
 
         public INewsRepository NewsRepository { get; set; }
+        public IClassifiedNewsRepository ClassifiedNewsRepository { get; set; }
 
         public UnitOfWork(CoreContext context) 
         {
             _context = context;
             this.NewsRepository = new NewsRepository(_context);
+            this.ClassifiedNewsRepository = new ClassifiedNewsRepository(_context);
         }
 
         protected virtual void Dispose(bool disposing)
