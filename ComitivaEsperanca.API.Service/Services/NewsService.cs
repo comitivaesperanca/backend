@@ -100,9 +100,8 @@ namespace ComitivaEsperanca.API.Service.Services
             }
         }
 
-        public async Task<PaginatedItemsDTO<NewsDTO>> GetListAsync(string? search, string? sentiment, DateTime? date, string? source, int pageSize, int pageIndex)
+        public PaginatedItemsDTO<NewsDTO> GetList(string? search, string? sentiment, DateTime? date, string? source, int pageSize, int pageIndex)
         {
-
             IQueryable<News> newsList = _unitOfWork.NewsRepository.GetAll().OrderBy(x => x.Title);
 
             if (search != null)
@@ -123,14 +122,12 @@ namespace ComitivaEsperanca.API.Service.Services
             if (date != null)
                 newsList = newsList.Where(x => x.PublicationDate.CompareTo(date) == 0);
 
-
-
-
-            var itemsOnPage = await GenericSort.SkipTakeAndSelectItemsAsync(newsList, pageSize, pageIndex, news => new NewsDTO(news));
-            var totalItems = await newsList.CountAsync();
+            var itemsOnPage = GenericSort.SkipTakeAndSelectItemsAsync(newsList, pageSize, pageIndex, news => new NewsDTO(news)).Result;
+            var totalItems = newsList.Count();
 
             return new PaginatedItemsDTO<NewsDTO>(pageIndex, pageSize, totalItems, itemsOnPage);
         }
+
         public ResponseDTO<List<NewsSentimentDTO>> GetDailySentiments()
         {
             var news = _unitOfWork.NewsRepository.GetAll()
