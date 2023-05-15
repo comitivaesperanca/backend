@@ -66,6 +66,30 @@ namespace ComitivaEsperanca.API.Service.Services
             }
         }
 
+       public ResponseDTO<ClassifiedNews> SaveSuggestedFeeling(Guid newsId, string feeling)
+        {
+            try
+            {
+                var news = _unitOfWork.NewsRepository.Get(x => x.Id == newsId);
+                if (news == null)
+                    return new ResponseDTO<ClassifiedNews>(StatusCodes.Status404NotFound);
+
+                var classifiedNews = new ClassifiedNews()
+                {
+                    NewsId = newsId,
+                    SuggestedFeeling = feeling
+                };
+                _unitOfWork.ClassifiedNewsRepository.Add(classifiedNews);
+                if (_unitOfWork.Commit() > 0)
+                    return new ResponseDTO<ClassifiedNews>(StatusCodes.Status201Created, classifiedNews);
+                return new ResponseDTO<ClassifiedNews>(StatusCodes.Status400BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO<ClassifiedNews>(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
         public int GetTotalNews()
         {
             return _unitOfWork.NewsRepository.GetAll().Count();
