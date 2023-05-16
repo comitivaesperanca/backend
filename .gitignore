@@ -13,7 +13,7 @@ ComitivaEsperanca.API/.vs/*
 *.user
 *.userosscache
 *.sln.docstates
-
+teste
 # System
 **/Debug\net6.0/
 **/obj/
