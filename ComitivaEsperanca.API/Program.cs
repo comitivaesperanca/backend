@@ -9,7 +9,7 @@ builder.Services.AddCors();
 
 builder.Services.AddEntityFrameworkNpgsql()
     .AddDbContext<CoreContext>(options =>
-    options.UseNpgsql("Server=pantanaldev-dev.postgres.database.azure.com;Database=api_database;Port=5432;User Id=comitivaesperanca;Password=Pantanal123;Ssl Mode=VerifyFull; CommandTimeout=300"));
+    options.UseNpgsql("Server=viaduct.proxy.rlwy.net;Database=railway;Port=14188;User Id=postgres;Password=dG3-264A3DdCBCbB515BdeCD*DeF64CB;Ssl Mode=disable; CommandTimeout=300"));
 
 ConfigureService.Configure(builder.Services);
 ConfigureRepositories.Configure(builder.Services, builder.Configuration);
@@ -22,6 +22,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+using (var context = (CoreContext) app.Services.GetService(typeof(CoreContext)))
+        {
+            context.Database.Migrate();
+        }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -53,5 +58,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();
