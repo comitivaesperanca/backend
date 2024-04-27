@@ -9,7 +9,7 @@ builder.Services.AddCors();
 
 builder.Services.AddEntityFrameworkNpgsql()
     .AddDbContext<CoreContext>(options =>
-    options.UseNpgsql("Server=viaduct.proxy.rlwy.net;Database=railway;Port=14188;User Id=postgres;Password=dG3-264A3DdCBCbB515BdeCD*DeF64CB;Ssl Mode=disable; CommandTimeout=300"));
+    options.UseNpgsql("Server=monorail.proxy.rlwy.net;Database=railway;Port=31794;User Id=postgres;Password=EzDQbWnjRodVzAGWdQeIkkOOpZJpiJOF;Ssl Mode=disable; CommandTimeout=300"));
 
 ConfigureService.Configure(builder.Services);
 ConfigureRepositories.Configure(builder.Services, builder.Configuration);
